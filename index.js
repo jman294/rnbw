@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-const RAINBOW_COLORS = [124, 196, 202, 208, 214, 220, 226, 154, 82, 46, 42, 45, 33, 21, 19]
+var RAINBOW_COLORS = [124, 196, 202, 208, 214, 220, 226, 154, 82, 46, 42, 45, 33, 21, 19]
 
 function rainbow(text) {
-  let charArray = text.split('')
-  let start = Math.round(Math.random() * 10 % RAINBOW_COLORS.length)
-  let colInd = start
-  let result = ''
-  for (let i = 0; i < charArray.length; i++) {
+  var charArray = text.split('')
+  var start = Math.round(Math.random() * 10 % RAINBOW_COLORS.length)
+  var colInd = start
+  var result = ''
+  for (var i = 0; i < charArray.length; i++) {
     if (charArray[i] === '\n') {
       result += '\n'
       start++

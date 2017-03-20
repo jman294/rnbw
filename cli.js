@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-const readline = require('readline')
-const fs = require('fs')
-const path = process.argv[2]
-const rnbw = require('./index')
+
+var readline = require('readline')
+var fs = require('fs')
+var path = process.argv[2]
+var rnbw = require('./index')
 
 if (process.argv.length < 3) {
-  let rl = readline.createInterface({
+  var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
     terminal: false
   })
-  let input = ''
-  rl.on('line', (line) => {
+  var input = ''
+  rl.on('line', function(line) {
     input += line + '\n'
   })
-  rl.on('close', () => {
+  rl.on('close', function() {
     console.log(rnbw.rainbow(input))
   })
 } else {
@@ -22,7 +23,7 @@ if (process.argv.length < 3) {
     console.log('Could not find file specified by that path')
     process.exit(1)
   } else {
-    fs.readFile(path, 'utf8', (err, data) => {
+    fs.readFile(path, 'utf8', function(err, data) {
       if (err) throw err
       console.log(rnbw.rainbow(data))
     })
