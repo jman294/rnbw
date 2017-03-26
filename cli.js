@@ -12,20 +12,20 @@ if (process.argv.length < 3) {
     terminal: false
   })
   var input = ''
-  rl.on('line', function(line) {
+  rl.on('line', function (line) {
     input += line + '\n'
   })
-  rl.on('close', function() {
-    console.log(rnbw.rainbow(input))
+  rl.on('close', function () {
+    console.log(rnbw.rainbow(input, 3))
   })
 } else {
   if (!fs.existsSync(path)) {
     console.log('Could not find file specified by that path')
     process.exit(1)
   } else {
-    fs.readFile(path, 'utf8', function(err, data) {
+    fs.readFile(path, 'utf8', function (err, data) {
       if (err) throw err
-      console.log(rnbw.rainbow(data))
+      console.log(rnbw.rainbow(data, 3))
     })
   }
 }
