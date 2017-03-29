@@ -4,28 +4,36 @@ var readline = require('readline')
 var fs = require('fs')
 var rnbw = require('./index')
 
-if (process.argv.length < 3) {
+var blur = 4
+var path = ''
+
+if (process.argv.length > 2) {
+  if (process.argv[2] === '-b') {
+    if (!isNaN(process.argv[3])) {
+      blur = process.argv[3]
+      if (process.argv[4]) {
+        path = process.argv[4]
+      }
+    }
+  } else {
+    path = process.argv[2]
+  }
+}
+
+if (!process.stdin.isTTY) {
+  var data = ''
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
     terminal: false
   })
-  var input = ''
   rl.on('line', function(line) {
-    input += line + '\n'
+    data += line + '\n'
   })
   rl.on('close', function() {
-    console.log(rnbw.rainbow(input, 8))
+    console.log(rnbw.rainbow(data, blur))
   })
 } else {
-  var blur = 5
-  var path = ''
-  if (process.argv[2] === '-b' && !isNaN(process.argv[3])) {
-    blur = process.argv[3]
-    path = process.argv[4] || ''
-  } else if (process.argv[2]) {
-    path = process.argv[2]
-  }
   if (!fs.existsSync(path)) {
     console.log('Could not find file specified by that path')
     process.exit(1)
