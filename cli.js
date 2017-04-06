@@ -31,7 +31,7 @@ if (!process.stdin.isTTY) {
     data += line + '\n'
   })
   rl.on('close', function() {
-    console.log(rnbw.rainbow(data, blur))
+    console.log(rnbw.rainbow(data, Number(blur)))
   })
 } else {
   if (!fs.existsSync(path)) {
