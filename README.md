@@ -1,3 +1,5 @@
+[![GitHub Repository Badge](https://gb-maker.herokuapp.com/makebadge/jman294/rnbw)](https://github.com/jman294/rnbw)
+
 # rnbw
 Rainbows for life
 
